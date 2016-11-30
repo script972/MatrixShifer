@@ -2,16 +2,13 @@ package com.script972.controller;
 
 import com.script972.DB.DBMani;
 import com.script972.DB.User;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
 import java.sql.SQLException;
-import java.util.Observable;
 
 /**
  * Created by script972 on 13.11.2016.
@@ -75,8 +72,6 @@ public class MainController {
             }
         }
 
-
-
         for (int i = 0; i < matrixPassword.length; i++)
             for (int j = 0; j < matrixPassword[i].length; j++) {
                 if (c<nameForGenerate.length) {
@@ -91,15 +86,61 @@ public class MainController {
 
 
             fillMatrix(matrixPassword);
+            encrypt(matrixPassword, devidePass(passwordF));
 
-        for (int i = 0; i < matrixPassword.length; i++) {
+
+
+/*        for (int i = 0; i < matrixPassword.length; i++) {
             for (int j = 0; j < matrixPassword[i].length; j++) {
                 System.out.print(matrixPassword[i][j]+" ");
             }
             System.out.println();
+        }*/
+    }
+                                                                                                                /*DO IT*/
+    void encrypt(char[][] matrixPassword, String[] password){
+        boolean doit=true;
+        int count=0;
+        while(doit==true) {
+            for (int i = 0; i < matrixPassword.length; i++) {
+                for (int j = 0; j < matrixPassword[i].length; j++) {
+                    System.out.println("Пароль "+String.valueOf(password[count].charAt(1))+" Матрица "+String.valueOf(matrixPassword[i][j]));
+                    if (String.valueOf(password[count].charAt(1))==String.valueOf(matrixPassword[i][j])){
+                        System.out.println("s="+i+" c="+j);
+                    }
+                }
+            }
+            count++;
         }
+
+        System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+        for (int i = 0; i < password.length; i++) {
+            System.out.print(password[i] + " ");
+        }
+
     }
 
+    private String[] devidePass(String passwordF) {
+        if(passwordF.length()%2!=0)
+            passwordF=passwordF+".";
+        System.out.println(passwordF.length());
+        String []bigram=new String[(int) Math.ceil(passwordF.length()/2)+1];
+        boolean check=true;
+        int k=0;
+        String temp = null;
+        for (int i = 0; i < passwordF.length(); i++) {
+            if (i%2==0){
+                temp=String.valueOf(passwordF.charAt(i));
+            }else{
+                temp=temp+String.valueOf(passwordF.charAt(i));
+                bigram[k]=temp;
+                k++;
+            }
+        }
+
+        error("Біграми поділені");
+        return bigram;
+    }
 
 
     void fillMatrix(char[][] matrixPassword){
@@ -109,8 +150,8 @@ public class MainController {
                 GridPane.add(new Label(String.valueOf(matrixPassword[i][j])),j,i);
             }
         }
+        error("Матриця виведена ");
     }
-
 
 
     public void error(String s) {

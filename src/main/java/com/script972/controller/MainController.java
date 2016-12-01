@@ -99,21 +99,55 @@ public class MainController {
     }
                                                                                                                 /*DO IT*/
     void encrypt(char[][] matrixPassword, String[] password){
-        boolean doit=true;
         int count=0;
-        while(doit==true) {
+        int [] bigram1=new int[2];
+        int [] bigram2=new int[2];
+        System.out.println("Пароль"+password.length);
+        while(count<password.length-1) {
             for (int i = 0; i < matrixPassword.length; i++) {
                 for (int j = 0; j < matrixPassword[i].length; j++) {
-                    System.out.println("Пароль "+String.valueOf(password[count].charAt(1))+" Матрица "+String.valueOf(matrixPassword[i][j]));
-                    if (String.valueOf(password[count].charAt(1))==String.valueOf(matrixPassword[i][j])){
-                        System.out.println("s="+i+" c="+j);
+                    //System.out.println("Пароль "+String.valueOf(password[count].charAt(1))+" Матрица "+String.valueOf(matrixPassword[i][j]));
+                    if (String.valueOf(password[count].charAt(0)).equals(String.valueOf(matrixPassword[i][j]))){
+                       // System.out.print("Первый символ биграмы "+password[count].charAt(0)+" ");
+                       // System.out.println("s="+i+" c="+j);
+                        bigram1[0]=i;
+                        bigram1[1]=j;
                     }
+                    if (String.valueOf(password[count].charAt(1)).equals(String.valueOf(matrixPassword[i][j]))){
+                        //System.out.print("Второй символ биграмы "+password[count].charAt(1)+" ");
+                        //System.out.println("s="+i+" c="+j);
+                        bigram2[0]=i;
+                        bigram2[1]=j;
+                    }
+                    //System.out.println(matrixPassword[0].length);
                 }
             }
+
+            //bigram[0]==s
+            //bigram[1]==c
+
+            // System.out.println("Символ "+matrixPassword[i][j] +" Биграмы Первая "+password[count].charAt(0)+" S="+bigram1[0]+" C="+bigram1[1]+" Вторая Биграма "+password[count].charAt(1)+" S="+bigram2[0]+" C="+bigram2[1]);
+            System.out.print(password[count].charAt(0)+" C="+bigram1[0]+" S="+bigram1[1]);
+            System.out.print(" "+password[count].charAt(1)+"C="+bigram2[0]+" S="+bigram2[1]);
+            // первый случай s1==s2
+            if (bigram1[0]==bigram2[0]){
+                System.out.println();
+                bigram1[0]=bigram1[0];
+                bigram1[1]=(bigram1[1]+1)%matrixPassword[0].length;
+                System.out.println("Первая биграма  S="+bigram1[0]+" C="+bigram1[0] );
+            }
+
+                    /*
+                    * . Если s1 = s2, то позиции букв шифрованной комбинации вычисляются так: для первой (s1, (c1 + 1) mod C),
+                     * для второй (s2, (c2 + 1) mod C), где (x, y) означает, что буква находится в столбце y строки x. Нумерация
+                      * строк и столбцов ведётся с нуля, строк - сверху вниз, столбцов - слева направо.
+                    *
+                    * */
             count++;
+
         }
 
-        System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+        System.out.print("divided password ");
         for (int i = 0; i < password.length; i++) {
             System.out.print(password[i] + " ");
         }

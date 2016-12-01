@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2559bda9-264b-4468-a524-5048a0e58af9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/script972/controller/MainController.class" afterPath="$PROJECT_DIR$/target/classes/com/script972/controller/MainController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/script972/controller/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/script972/controller/MainController.java" />
     </list>
@@ -131,12 +132,12 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/script972/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="12" />
+            <state relative-caret-position="41">
+              <caret line="156" column="38" selection-start-line="156" selection-start-column="38" selection-end-line="156" selection-end-column="38" />
               <folding>
                 <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
                 <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-                <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+                <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -770,7 +771,7 @@
       <workItem from="1480324357736" duration="7255000" />
       <workItem from="1480451954571" duration="5338000" />
       <workItem from="1480509287271" duration="7755000" />
-      <workItem from="1480618230159" duration="10831000" />
+      <workItem from="1480618230159" duration="14152000" />
     </task>
     <task id="LOCAL-00001" summary="do encrypt">
       <created>1480542495868</created>
@@ -779,11 +780,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480542495868</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="full pizdets">
+      <created>1480630903184</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1480630903184</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75142000" />
+    <option name="totallyTimeSpent" value="78463000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -869,7 +877,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="do encrypt" />
-    <option name="LAST_COMMIT_MESSAGE" value="do encrypt" />
+    <MESSAGE value="full pizdets" />
+    <option name="LAST_COMMIT_MESSAGE" value="full pizdets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -889,7 +898,7 @@
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -990,7 +999,7 @@
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1091,7 +1100,7 @@
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1146,7 +1155,7 @@
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1202,7 +1211,7 @@
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1250,7 +1259,7 @@
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1367,12 +1376,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/script972/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="12" />
+        <state relative-caret-position="41">
+          <caret line="156" column="38" selection-start-line="156" selection-start-column="38" selection-end-line="156" selection-end-column="38" />
           <folding>
             <element signature="method#devidePass#0;class#MainController#0" expanded="false" />
             <element signature="method#fillMatrix#0;class#MainController#0" expanded="false" />
-            <marker date="1480630828808" expanded="true" signature="3629:4606" ph="{...}" />
+            <marker date="1480634190487" expanded="true" signature="3629:4603" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -135,16 +135,19 @@ public class MainController {
                       * строк и столбцов ведётся с нуля, строк - сверху вниз, столбцов - слева направо.
                     *
                     * */
-            // первый случай s1==s2
+            // первый случай s1==s2 //CHECK
             if (bigram1[0]==bigram2[0]){
                 System.out.println();
                 bigram1[0]=bigram1[0];
+               // System.out.print("Действия "+bigram1[1]+"+1%"+matrixPassword[0].length);
                 bigram1[1]=(bigram1[1]+1)%matrixPassword[0].length;
+               // System.out.print(" "+bigram1[1]);
                 System.out.println("Первая биграма буква "+password[count].charAt(0)+" S="+bigram1[0]+" C="+bigram1[1] );
+
                 bigram2[0]=bigram2[0];
                 bigram2[1]=(bigram2[1]+1)%matrixPassword[0].length;
                 System.out.println("Вторая биграма буква "+password[count].charAt(1)+"  S="+bigram2[0]+" C="+bigram2[1] );
-            }else
+            }else /* Если c1 = c2, то для первой ((s1 + 1) mod S, c1), для второй ((s2 + 1) mod S, c2). */ //CHECK
             if(bigram1[1]==bigram2[1]){
                 System.out.println();
                 bigram1[0]=(bigram1[0]+1)%matrixPassword.length;
@@ -154,14 +157,19 @@ public class MainController {
                 bigram2[1]=bigram2[1];
                 System.out.println("Вторая биграма буква "+password[count].charAt(1)+"  S="+bigram2[0]+" C="+bigram2[1] );
             }
-            else//в єтой ветке ошибка
+            else//в єтой ветке ошибка   Если же оба предыдущих условия неверны, то для первой (s1, c2), для второй (s2, c1).
             {
+                int tempS1=bigram1[0];
+                int tempC1=bigram1[1];
+                int tempS2=bigram2[0];
+                int tempC2=bigram2[1];
                 System.out.println();
-                bigram1[0]=bigram1[0];
-                bigram1[1]=bigram2[1];
-                System.out.println("Первая биграма буква "+password[count].charAt(0)+" S="+bigram1[0]+" C="+bigram1[1] );
-                bigram2[0]=bigram2[0];
-                bigram2[1]=bigram1[1];
+                bigram1[0]=tempS1;
+                bigram1[1]=tempC2;
+                System.out.println("Первая биграма буква "+password[count].charAt(0)+" S="+bigram1[0]+" C="+bigram1[1] );// CHECK
+                bigram2[0]=tempS2;
+                bigram2[1]=tempC1;//error
+               // System.out.println(bigram1[1]);
                 System.out.println("Вторая биграма буква "+password[count].charAt(1)+"  S="+bigram2[0]+" C="+bigram2[1] );
             }
             count++;

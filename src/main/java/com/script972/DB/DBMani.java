@@ -20,6 +20,8 @@ public class DBMani {
     }
 
     public ObservableList<User> TakePersonLog(String loginF) throws SQLException {
+        System.out.println("Подлючение к БД ОТКРЫТО");
+
         ObservableList<User> userObservableList= FXCollections.observableArrayList();
         DBProcessor db=new DBProcessor();
         Connection conn=db.getConnection(URL, USERNAME, PASSWORD);
@@ -40,6 +42,7 @@ public class DBMani {
         }
         statement.close();
         conn.close();
+        System.out.println("Подлючение к БД ЗАКРЫТО");
         return userObservableList;
     }
 

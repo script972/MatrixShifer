@@ -43,13 +43,22 @@ public class MainController {
         User user=listTrueLogin.get(0); //From DB
         String name=user.getName();
         String pass=user.getPassword(); //Password from DB
+        String content=user.getSecretInfo();
         String passwordF=password.getText();//Password from FORM дольчевита
-        GeneratePassword(passwordF, name);
+        System.out.println("Пароль  с БД"+pass+" Сгенерований пароль "+GeneratePassword(passwordF, name));
+        if (pass.equals(GeneratePassword(passwordF, name))){
+            error("Пароль правильний Аутентифікація пройдена");
+            error("Секретна інформація="+content);
+        } else
+        {
+            error("шось пішло не так");
+        }
     }
 
-    private void GeneratePassword(String passwordF, String name) {
+    private String GeneratePassword(String passwordF, String name) {
         char [] alphavit={'а', 'б', 'в', 'г', 'д', 'е', 'є', 'ж', 'з', 'и', 'і', 'ї', 'й', 'к', 'л', 'м', 'н', 'о', 'п',
-                'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ю', 'я', '’', '.',' '};
+                'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ю', 'я', '’', '.','_'};
+        
         char [] nameForGenerate=name.toCharArray();
         System.out.println(nameForGenerate);
         char [][] matrixPassword=new char[7][5];
@@ -84,21 +93,12 @@ public class MainController {
                 }
             }
 
-
             fillMatrix(matrixPassword);
-            encrypt(matrixPassword, devidePass(passwordF));
+            return encrypt(matrixPassword, devidePass(passwordF));
 
-
-
-/*        for (int i = 0; i < matrixPassword.length; i++) {
-            for (int j = 0; j < matrixPassword[i].length; j++) {
-                System.out.print(matrixPassword[i][j]+" ");
-            }
-            System.out.println();
-        }*/
     }
                                                                                                                 /*DO IT*/
-    void encrypt(char[][] matrixPassword, String[] password){
+    String encrypt(char[][] matrixPassword, String[] password){
         int count=0;
         String outPassword=null;
         int [] bigram1=new int[2];
@@ -130,12 +130,7 @@ public class MainController {
             // System.out.println("Символ "+matrixPassword[i][j] +" Биграмы Первая "+password[count].charAt(0)+" S="+bigram1[0]+" C="+bigram1[1]+" Вторая Биграма "+password[count].charAt(1)+" S="+bigram2[0]+" C="+bigram2[1]);
             System.out.print(password[count].charAt(0)+" C="+bigram1[0]+" S="+bigram1[1]);
             System.out.print(" "+password[count].charAt(1)+"C="+bigram2[0]+" S="+bigram2[1]);
-            /*
-                    * . Если s1 = s2, то позиции букв шифрованной комбинации вычисляются так: для первой (s1, (c1 + 1) mod C),
-                     * для второй (s2, (c2 + 1) mod C), где (x, y) означает, что буква находится в столбце y строки x. Нумерация
-                      * строк и столбцов ведётся с нуля, строк - сверху вниз, столбцов - слева направо.
-                    *
-                    * */
+
             // первый случай s1==s2 //CHECK
             if (bigram1[0]==bigram2[0]){
                 System.out.println();
@@ -149,7 +144,7 @@ public class MainController {
                 bigram2[1]=(bigram2[1]+1)%matrixPassword[0].length;
                 System.out.println("Вторая биграма буква "+password[count].charAt(1)+"  S="+bigram2[0]+" C="+bigram2[1] +" Вывод "+matrixPassword[bigram2[0]][bigram2[1]]);
                 outPassword=outPassword+matrixPassword[bigram1[0]][bigram1[1]]+matrixPassword[bigram2[0]][bigram2[1]];
-            }else /* Если c1 = c2, то для первой ((s1 + 1) mod S, c1), для второй ((s2 + 1) mod S, c2). */ //CHECK
+            }else   //CHECK
             if(bigram1[1]==bigram2[1]){
                 System.out.println();
                 bigram1[0]=(bigram1[0]+1)%matrixPassword.length;
@@ -160,7 +155,7 @@ public class MainController {
                 System.out.println("Вторая биграма буква "+password[count].charAt(1)+"  S="+bigram2[0]+" C="+bigram2[1] );
                 outPassword=outPassword+matrixPassword[bigram1[0]][bigram1[1]]+matrixPassword[bigram2[0]][bigram2[1]];
             }
-            else//в єтой ветке ошибка   Если же оба предыдущих условия неверны, то для первой (s1, c2), для второй (s2, c1).
+            else//в єтой ветке ошибка
             {
                 int tempS1=bigram1[0];
                 int tempC1=bigram1[1];
@@ -189,8 +184,12 @@ public class MainController {
 
         System.out.print("divided password ");
         for (int i = 0; i < password.length; i++) {
-            System.out.print(password[i] + " ");
+            System.out.print(password[i]+" ");
         }
+
+        outPassword=outPassword.substring(4);
+        System.out.println("outPassword="+outPassword);
+        return outPassword;
 
     }
 
@@ -213,6 +212,7 @@ public class MainController {
         }
 
         error("Біграми поділені");
+
         return bigram;
     }
 
